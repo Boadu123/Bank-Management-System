@@ -1,4 +1,4 @@
-class BankAccount {
+abstract class BankAccount implements BankOperations{
     private String accountNumber;
     private String accountName;
     protected double balance;
@@ -18,12 +18,34 @@ class BankAccount {
         }
     }
 
+    public void deposit(double amount, String note) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("You deposited " + amount + ". Note: " + note);
+        } else {
+            System.out.println("Deposit failed. Amount must be greater than 0.");
+        }
+    }
+    
+
     public void withdrawal(double amount){}
 
     public double accountBalance() {
         System.out.println("Your balance is " + balance);
         return balance;
     }
+
+    public double accountBalance(String currency) {
+        System.out.println("Your balance in " + currency + " is: " + balance);
+        return balance;
+    }
+    
+
+    public void withdrawal(double amount, String note) {
+        System.out.println("Attempting to withdraw " + amount + " for: " + note);
+        withdrawal(amount);
+    }
+    
 
     public void showInfo() {
         System.out.println("Your account number is " + accountNumber);

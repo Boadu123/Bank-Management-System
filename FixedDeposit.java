@@ -7,7 +7,6 @@ class FixedDeposit extends BankAccount{
 
     public FixedDeposit(String accountNumber, String accountName, double balance, double interestRate, int maturityMonths) {
         super(accountNumber, accountName, balance);
-        this.interestRate = interestRate;
         this.creationDate = LocalDate.now();
         this.maturityDate = creationDate.plusMonths(maturityMonths);
     }
